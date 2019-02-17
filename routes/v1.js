@@ -8,6 +8,12 @@ var NotaController = require('../controllers/NotaController');
 var AlumneRequest = require('../Requests/Alumne');
 var AssignaturaRequests = require('../Requests/Assignatura');
 var NotaRequest = require('../Requests/Nota');
+router.use((req, res, next) => {
+    if (req.headers['x-token'] !== 'C0UsWlYxXrMx81TKN2Eq'){
+        res.status(404).json({error: 'token no valid'});
+    }
+    next();
+});
 /* Alumnes */
 router.get('/alumnes', AlumneController.getAll);
 router.get('/alumne/:id', AlumneController.getByID);

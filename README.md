@@ -12,34 +12,39 @@
     DELETE   /api/v1/assignatura/:id
     POST     /api/v1/nota
     POST     /api/v1/vincular
+# Token
+x-token = C0UsWlYxXrMx81TKN2Eq
 
-# Deploy
+# Deploy over Centos07
 ### Install
     yum update
     yum install mysql-server
 ### Configure mysql
-> nano /etc/my.cnf
-
-    bind-address = 0.0.0.0
-
-> firewall-cmd --zone=public --add-service=mysql --permanent  
-> firewall-cmd --reload  
-> systemctl enable mariadb  
-> systemctl start mariadb  
+~~~
+nano /etc/my.cnf
+>bind-address = 0.0.0.0
+firewall-cmd --zone=public --add-service=mysql --permanent  
+firewall-cmd --reload  
+systemctl enable mariadb  
+systemctl start mariadb  
+~~~
 ### Security zone
-> mysql_secure_installation  
-> mysqladmin -u root -p xxxxxxxxxxx    ## xxxxxxxx = el teu password...  
-> CREATE DATABASE nom_base_dades;  
-> CREATE USER 'nom'@'localhost' IDENTIFIED BY 'password';   # important, si has d'accedir remotament no has de possar localhost sino %  
-> GRANT ALL PRIVILEGES ON *.* TO 'nom_usuari'@'localhost';   
+~~~
+mysql_secure_installation  
+mysqladmin -u root -p xxxxxxxxxxx    ## xxxxxxxx = el teu password...  
+CREATE DATABASE nom_base_dades;  
+CREATE USER 'nom'@'localhost' IDENTIFIED BY 'password';   # important, si has d'accedir remotament no has de possar localhost sino %  
+GRANT ALL PRIVILEGES ON *.* TO 'nom_usuari'@'localhost';   
 1. Important, si has d'accedir remotament no has de possar localhost sino %.  
 2. Especificar la base de dades! => ON db.*  
-> FLUSH PRIVILEGES;  
+FLUSH PRIVILEGES;  
+~~~
 ### Lunch API!
-> npm install  
-> npm update  
-> cp config/config.example.json config/config.json  
-> edit config/config.json  
+~~~
+npm install  
+npm update  
+cp config/config.example.json config/config.json  
+edit config/config.json  
 
     "development": {  
     "username": "xxxxxxxxx",  
@@ -49,16 +54,10 @@
     "dialect": "mysql"  
     },  
 
-> node ./node_modules/sequelize-auto-migrations/bin/runmigration.js  
-> npm start  
-> ready to go!  
-
-
-
-
-
-
-
+node ./node_modules/.bin/sequelize db:create
+node ./node_modules/sequelize-auto-migrations/bin/runmigration.js  
+npm start  
+~~~
 # Altres notes :: DEV ::
 ### Per si ens carreguem la base de dades...
 > node node_modules/.bin/sequelize db:drop  
