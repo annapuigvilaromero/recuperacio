@@ -1,5 +1,7 @@
 
 # Routes API
+url treballant en localhost:    http://127.0.0.1:3000/
+~~~
     GET      /api/v1/alumnes
     GET      /api/v1/alumne/:id
     POST     /api/v1/alumne
@@ -12,6 +14,7 @@
     DELETE   /api/v1/assignatura/:id
     POST     /api/v1/nota
     POST     /api/v1/vincular
+~~~
 # Token
 x-token = C0UsWlYxXrMx81TKN2Eq
 
