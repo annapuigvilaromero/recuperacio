@@ -18,7 +18,7 @@ x-token = C0UsWlYxXrMx81TKN2Eq
 # Deploy over Centos07
 ### Install
     yum update
-    yum install mysql-server
+    yum install mariadb
 ### Configure mysql
 ~~~
 nano /etc/my.cnf
@@ -27,10 +27,11 @@ firewall-cmd --zone=public --add-service=mysql --permanent
 firewall-cmd --reload  
 systemctl enable mariadb  
 systemctl start mariadb  
-~~~
-### Security zone
-~~~
 mysql_secure_installation  
+~~~
+### MySQL Database (podeu fer-ho amb el Workbench)
+~~~
+
 mysqladmin -u root -p xxxxxxxxxxx    ## xxxxxxxx = el teu password...  
 CREATE DATABASE nom_base_dades;  
 CREATE USER 'nom'@'localhost' IDENTIFIED BY 'password';   # important, si has d'accedir remotament no has de possar localhost sino %  
