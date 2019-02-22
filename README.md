@@ -32,12 +32,10 @@ mysql_secure_installation
 ### MySQL Database (podeu fer-ho amb el Workbench)
 ~~~
 
-mysqladmin -u root -p xxxxxxxxxxx    ## xxxxxxxx = el teu password...  
+mysql -u root -p  
 CREATE DATABASE nom_base_dades;  
-CREATE USER 'nom'@'localhost' IDENTIFIED BY 'password';   # important, si has d'accedir remotament no has de possar localhost sino %  
-GRANT ALL PRIVILEGES ON *.* TO 'nom_usuari'@'localhost';   
-1. Important, si has d'accedir remotament no has de possar localhost sino %.  
-2. Especificar la base de dades! => ON db.*  
+CREATE USER 'nom'@'%' IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON *.* TO 'nom_usuari'@'%';    
 FLUSH PRIVILEGES;  
 ~~~
 ### Lunch API!
