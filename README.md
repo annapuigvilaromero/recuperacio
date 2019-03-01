@@ -1,6 +1,7 @@
-
+# Dades
+url = http://127.0.0.1:3000/
+x-token = C0UsWlYxXrMx81TKN2Eq
 # Routes API
-url treballant en localhost:    http://127.0.0.1:3000/
 ~~~
     GET      /api/v1/alumnes
     GET      /api/v1/alumne/:id
@@ -15,8 +16,6 @@ url treballant en localhost:    http://127.0.0.1:3000/
     POST     /api/v1/nota
     POST     /api/v1/vincular
 ~~~
-# Token
-x-token = C0UsWlYxXrMx81TKN2Eq
 
 # Deploy over Centos07
 ### Install
@@ -41,7 +40,7 @@ CREATE USER 'nom'@'%' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON *.* TO 'nom_usuari'@'%';    
 FLUSH PRIVILEGES;  
 ~~~
-### Lunch API!
+### Lanch API!
 ~~~
 npm install  
 npm update  
@@ -56,8 +55,8 @@ edit config/config.json
     "dialect": "mysql"  
     },  
 
-node ./node_modules/.bin/sequelize db:create
-node ./node_modules/sequelize-auto-migrations/bin/runmigration.js  
+.\node_modules\.bin\sequelize db:create
+node node_modules\sequelize-auto-migrations\bin\runmigration.js  
 npm start  
 ~~~
 # Altres notes :: DEV ::
